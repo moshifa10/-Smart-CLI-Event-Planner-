@@ -24,7 +24,7 @@ parser.add_argument("-v","--view", help="View holidays", action="store_true")
 parser.add_argument("-c", "--create", nargs="+", help="This is create flag where you add events tittle, date, start_time and end_time")
 parser.add_argument("-d", "--delete", help="Delete an event using id of your choice", nargs="+")
 
-args = parser.parse_args()
+args = parser.parse_args()  
 
 if args.today:
     api.view_date()
