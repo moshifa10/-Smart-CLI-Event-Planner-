@@ -19,29 +19,35 @@ class Events:
         self.id += 1
     
     def write_to_json(self, data):
-        with open(file=FILE_NAME, mode="a") as file:
-            json.dump(data, file, indent=4)
+        with open(file=FILE_NAME, mode="r+") as f:
+            file_data = json.load(f)
+            f.seek(0)
+            file_data.append(data)
+            json.dump(file_data, f, indent=4)
 
 
     def view_saved_events(self):
         try:
             with open(FILE_NAME, mode="r") as data:
-                data = json.loads(data)
-                if FILE_NAME:
-                    print("Your Events: ")
-                    for count, event in enumerate( FILE_NAME):
-                        print(f"[{count}] {event["tittle"]}\n    Date: {event['date']}\n    Time: {event['start_time']} - {event['end_time']}")
+                data = json.load(data)
+                if len(data) > 0:
+                    print("Your Events: \n")
+                    for event in range(len(data)):
+                        current_event = data[event]
+                        print(f"[{event+1}] {current_event["tittle"]}\n    Date: {current_event['date']}\n    Time: {current_event['start_time']} - {current_event['end_time']}")
+
+                else:
+                    print("No Event yet!")
         except FileNotFoundError:
             print("Try checking your file path")
 
-        else:
-            print("No Event yet!")
+        
 
 
     def delete_event(self, id):
         try: 
             with open(file=FILE_NAME, mode="r") as data:
-                data = json.loads(data)
+                data = json.load(data)
 
                 for event in data:
                     if event["id"] == id:
@@ -51,3 +57,9 @@ class Events:
         except FileNotFoundError:
             print(f"The file was not found check the path {FILE_NAME}")
     
+
+
+my_events = Events()
+
+my_events.create_event(title="gym", date="2026-01-18", start_time="4", end_time="92")
+# my_events.view_saved_events()
