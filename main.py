@@ -30,7 +30,7 @@ if args.today:
     api.view_date()
 
 elif args.holiday:
-    api.public_holidays()
+    api.public_holidays(country_code="ZA")
 
 elif args.view:
     events.view_saved_events()

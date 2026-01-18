@@ -9,7 +9,8 @@ class Api:
     def view_date(self):
         area = "Africa"
         region = "Johannesburg"
-        get_data = requests.get(f"{self.api}/{area}/{region}")
+        headers = {"User-Agent": "Mozilla/5.0"}
+        get_data = requests.get(f"{self.api}/{area}/{region}", headers=headers, timeout=5)
 
 
         if get_data.status_code == 200:
