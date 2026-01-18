@@ -24,11 +24,30 @@ class Events:
 
 
     def view_saved_events(self):
-        print("Your Events: ")
-        if FILE_NAME:
-            for count, event in enumerate( FILE_NAME):
-                print(f"[{count}] {event["tittle"]}\n    Date: {event['date']}\n    Time: {event['start_time']} - {event['end_time']}")
+        try:
+            with open(FILE_NAME, mode="r") as data:
+                data = json.loads(data)
+                if FILE_NAME:
+                    print("Your Events: ")
+                    for count, event in enumerate( FILE_NAME):
+                        print(f"[{count}] {event["tittle"]}\n    Date: {event['date']}\n    Time: {event['start_time']} - {event['end_time']}")
+        except FileNotFoundError:
+            print("Try checking your file path")
 
         else:
             print("No Event yet!")
+
+
+    def delete_event(self, id):
+        try: 
+            with open(file=FILE_NAME, mode="r") as data:
+                data = json.loads(data)
+
+                for event in data:
+                    if event["id"] == id:
+                        print(f"Event ({event['tittle']}) deleted successfully.")
+                        del event
+            
+        except FileNotFoundError:
+            print(f"The file was not found check the path {FILE_NAME}")
     
