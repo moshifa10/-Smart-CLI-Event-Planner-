@@ -9,15 +9,13 @@ class Api:
     def view_date(self):
         area = "Africa"
         region = "Johannesburg"
-        get_data = requests.get(f"{self.api}/{area}//{region}")
+        get_data = requests.get(f"{self.api}/{area}/{region}")
 
 
         if get_data.status_code == 200:
             print(f"Successfully got the data with this code: {get_data.status_code}")
             data = get_data.json()
 
-
-        print(data)
         # convert them to usable things
         date = []
         change = 0
@@ -57,5 +55,5 @@ class Api:
 
 
 current = Api()
-# current.view_date()
-current.public_holidays(country_code="ZA")
+current.view_date()
+# current.public_holidays(country_code="ZA")
