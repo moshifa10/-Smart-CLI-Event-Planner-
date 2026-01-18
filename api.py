@@ -54,6 +54,6 @@ class Api:
         
 
 
-current = Api()
-current.view_date()
+# current = Api()
+# current.view_date()
 # current.public_holidays(country_code="ZA")

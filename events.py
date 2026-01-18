@@ -58,7 +58,7 @@ class Events:
                         with open(FILE_NAME, mode="w") as file:
                             json.dump(data, file, indent=4)
                         
-                if not found:
+                if  found == False:
                     print("The ID was not found !")
                 
             
@@ -67,8 +67,8 @@ class Events:
     
 
 
-my_events = Events()
+# my_events = Events()
 
-my_events.create_event(title="prayer", date="2026-01-18", start_time="`10", end_time="50")
+# my_events.create_event(title="prayer", date="2026-01-18", start_time="`10", end_time="50")
 # my_events.view_saved_events()
 # my_events.delete_event(1)
