@@ -1,23 +1,9 @@
 [
     {
         "id": 1,
-        "tittle": "work",
+        "tittle": "prayer",
         "date": "2026-01-18",
-        "start_time": "7",
-        "end_time": "9"
-    },
-    {
-        "id": 3,
-        "tittle": "eat",
-        "date": "2026-01-18",
-        "start_time": "7",
-        "end_time": "9"
-    },
-    {
-        "id": 2,
-        "tittle": "gym",
-        "date": "2026-01-18",
-        "start_time": "4",
-        "end_time": "92"
+        "start_time": "`10",
+        "end_time": "50"
     }
 ]

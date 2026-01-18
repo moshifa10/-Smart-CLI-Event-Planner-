@@ -21,8 +21,8 @@ class Events:
     def write_to_json(self, data):
         with open(file=FILE_NAME, mode="r+") as f:
             file_data = json.load(f)
-            f.seek(0)
             file_data.append(data)
+            f.seek(0)
             json.dump(file_data, f, indent=4)
 
 
@@ -49,10 +49,18 @@ class Events:
             with open(file=FILE_NAME, mode="r") as data:
                 data = json.load(data)
 
-                for event in data:
+                for count, event in enumerate(data):
+                    found = False
                     if event["id"] == id:
+                        found = True
                         print(f"Event ({event['tittle']}) deleted successfully.")
-                        del event
+                        data.pop(count)
+                        with open(FILE_NAME, mode="w") as file:
+                            json.dump(data, file, indent=4)
+                        
+                if not found:
+                    print("The ID was not found !")
+                
             
         except FileNotFoundError:
             print(f"The file was not found check the path {FILE_NAME}")
@@ -61,6 +69,6 @@ class Events:
 
 my_events = Events()
 
-# my_events.create_event(title="gym", date="2026-01-18", start_time="4", end_time="92")
+my_events.create_event(title="prayer", date="2026-01-18", start_time="`10", end_time="50")
 # my_events.view_saved_events()
-my_events.delete_event(2)
+# my_events.delete_event(1)
