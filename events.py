@@ -61,5 +61,6 @@ class Events:
 
 my_events = Events()
 
-my_events.create_event(title="gym", date="2026-01-18", start_time="4", end_time="92")
+# my_events.create_event(title="gym", date="2026-01-18", start_time="4", end_time="92")
 # my_events.view_saved_events()
+my_events.delete_event(2)
