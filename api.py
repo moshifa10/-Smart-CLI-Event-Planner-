@@ -16,7 +16,7 @@ class Api:
         if get_data.status_code == 200:
             print(f"Successfully got the data with this code: {get_data.status_code}")
             data = get_data.json()
-
+        # print(get_data.connection)
         # convert them to usable things
         date = []
         change = 0
